@@ -1,18 +1,21 @@
 from PIL import Image, ImageFont, ImageDraw
+import os
 
 class image_changer_class:
     def image_changer(day: int):
         
         UPPER = 500
+        image_path = os.path.abspath(r'source_files/baseImgMemeNew.jpg')
+        font_path = os.path.abspath(r'source_files/calibrib.ttf')
 
-        base_image = Image.open(r'source_files/baseImgMemeNew.jpg')
+        base_image = Image.open(image_path)
 
         image_width, image_height = base_image.size
         image_center = (image_width/2, image_height/2)
 
         editable_image = ImageDraw.Draw(base_image)
 
-        text_font = ImageFont.truetype('source_files\calibrib.ttf', 70)
+        text_font = ImageFont.truetype(font_path, 70)
         main_text = 'dia {}'.format(day)
 
         text_measure = editable_image.textbbox((0, 0), main_text, text_font)
